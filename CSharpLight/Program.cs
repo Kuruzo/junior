@@ -10,6 +10,7 @@ namespace CSharpLight
     {
         static void Main(string[] args)
         {
+            CristalShop.StartMainMettod();
         }
     }
 }
