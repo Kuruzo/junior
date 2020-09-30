@@ -7,7 +7,7 @@ namespace CSharpLight
         static class Map
         {
             // Setting textures ^-^ 
-            static readonly Texture wall = new Texture('@', ConsoleColor.White, ConsoleColor.DarkYellow);
+            static readonly Texture wall = new Texture('@', ConsoleColor.White, ConsoleColor.DarkYellow, false);
             static readonly Texture space = new Texture(' ', ConsoleColor.White, ConsoleColor.DarkRed);
 
             // Create map

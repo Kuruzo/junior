@@ -21,9 +21,12 @@ namespace CSharpLight
 
         static void Moving()
         {
+            object pressedKey;
             while (true)
             {
-                switch (Console.ReadKey().Key)
+                pressedKey = Console.ReadKey().Key;
+                if (true)
+                switch (pressedKey)
                 {
                     case (ConsoleKey.UpArrow):
                         
@@ -39,6 +42,7 @@ namespace CSharpLight
                         break;
                 }
             }
+
         }
     }
 }
