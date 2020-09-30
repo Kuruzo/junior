@@ -10,25 +10,10 @@ namespace CSharpLight
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             // Queue.StartMainMettod();
-            Console.WriteLine("Hello!");
-            Console.WriteLine(DigitalRoot(123));
-        }
-        public static int DigitalRoot(long n)
-        {
-            int result = 0;
-            foreach (int item in Convert.ToString(n))
-            {
-                result += item - '0';
-            }
-
-            if (result > 9)
-            {
-                return DigitalRoot(Convert.ToInt64(result));
-            }
-            else return result;
+            MapGame.Run();
         }
     }  
 }
