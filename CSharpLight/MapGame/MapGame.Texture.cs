@@ -24,16 +24,24 @@ namespace CSharpLight
                 this.passable = passable;
             }
 
-            public void PrintTexture()
+            public void Print()
             {
                 Console.ForegroundColor = foregroundColor;
                 Console.BackgroundColor = backgroundColor;
                 Console.Write(symbol);
             }
 
-            public void PrintTexture(Position position)
+            public void Print(Position position)
             {
-                Console.SetCursorPosition(position.XPos, position.YPos);
+                Console.SetCursorPosition(position.xPos, position.yPos);
+                Console.ForegroundColor = foregroundColor;
+                Console.BackgroundColor = backgroundColor;
+                Console.Write(symbol);
+            }
+
+            public void Print(int x, int y)
+            {
+                Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = foregroundColor;
                 Console.BackgroundColor = backgroundColor;
                 Console.Write(symbol);

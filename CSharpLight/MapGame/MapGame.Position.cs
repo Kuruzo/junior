@@ -4,17 +4,13 @@
     {
         public class Position
         {
-            private int xPos, yPos;
+            public int xPos, yPos;
 
-            public void SetPosition(int x, int y)
+            public void Set(int x, int y)
             {    
                 xPos = x;
-                xPos = y;
+                yPos = y;
             }
-
-            // Block Get
-            public int XPos { get => xPos; }
-            public int YPos { get => yPos; }
         }
     }
 }

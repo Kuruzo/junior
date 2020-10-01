@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace CSharpLight
 {
@@ -13,36 +7,58 @@ namespace CSharpLight
         // Start Game
         static public void Run()
         {
+            // settup
             Console.CursorVisible = false;
+
+            // Paint Map
             Map.Pain();
             Console.ResetColor();
 
+            // spawn Player
+            Player player = new Player();
+            player.position.Set(4, 6);
+            player.texture.Print(player.position);
+            player.Moving();
+
         }
 
-        static void Moving()
+
+
+        public class Player
         {
-            object pressedKey;
-            while (true)
+            public Position position = new Position();
+            public Texture texture = new Texture('0', ConsoleColor.White, ConsoleColor.DarkRed);
+
+
+            public void Moving()
             {
-                pressedKey = Console.ReadKey().Key;
-                if (true)
-                switch (pressedKey)
+                object pressedKey;
+                while (true)
                 {
-                    case (ConsoleKey.UpArrow):
-                        
-                        break;
-                    case (ConsoleKey.DownArrow):
+                    pressedKey = Console.ReadKey(true).Key;
+                    Map.Print(position.xPos - 1, position.yPos);
 
-                        break;
-                    case (ConsoleKey.LeftArrow):
+                    switch (pressedKey)
+                    {
+                        case (ConsoleKey.UpArrow):
+                            position.yPos--;
+                            break;
+                        case (ConsoleKey.DownArrow):
+                            position.yPos++;
+                            break;
+                        case (ConsoleKey.LeftArrow):
+                            position.xPos--;
+                            break;
+                        case (ConsoleKey.RightArrow):
+                            position.xPos++;
+                            break;
+                        default:
+                            break;
+                    }
 
-                        break;
-                    case (ConsoleKey.RightArrow):
-
-                        break;
+                    texture.Print(position);
                 }
             }
-
         }
     }
 }

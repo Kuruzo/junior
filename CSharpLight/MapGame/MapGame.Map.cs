@@ -1,29 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace CSharpLight
 {
     static partial class MapGame
     {
-        static class Map
+        public static class Map
         {
-            // Setting textures ^-^ 
-            static readonly Texture wall = new Texture('@', ConsoleColor.White, ConsoleColor.DarkYellow, false);
-            static readonly Texture space = new Texture(' ', ConsoleColor.White, ConsoleColor.DarkRed);
-
             // Create map
             private static char X => wall.symbol;
             private static char _ => space.symbol;
             private readonly static char[,] paintedMap =
-            { 
-                    {X,X,X,X,X,X,X,X,X,X,X,X,X},
-                    {X,_,_,_,_,_,_,_,_,X,_,_,X},
-                    {X,_,_,_,_,_,_,_,_,X,_,_,X},
-                    {X,_,_,_,_,X,_,_,_,X,_,_,X},
-                    {X,_,_,_,_,X,_,_,_,_,_,_,X},
-                    {X,_,_,_,_,X,_,_,_,_,_,_,X},
-                    {X,_,_,_,_,X,_,_,_,_,_,_,X},
-                    {X,X,X,X,X,X,X,X,X,X,X,X,X},
+            {
+                    {_,_,_,_,_,_,_,_,_,_,_,_,_,_,_},
+                    {_,X,X,X,X,X,X,X,X,X,X,X,X,X,_},
+                    {_,X,_,_,_,_,_,_,_,_,X,_,_,X,_},
+                    {_,X,_,_,_,_,_,_,_,_,X,_,_,X,_},
+                    {_,X,_,_,_,_,X,_,_,_,X,_,_,X,_},
+                    {_,X,_,_,_,_,X,_,_,_,_,_,_,X,_},
+                    {_,X,_,_,_,_,X,_,_,_,_,_,_,X,_},
+                    {_,X,_,_,_,_,X,_,_,_,_,_,_,X,_},
+                    {_,X,X,X,X,X,X,X,X,X,X,X,X,X,_},
+                    {_,_,_,_,_,_,_,_,_,_,_,_,_,_,_},
             };
+
+            public static string[] mapLines; 
+
+            public static Dictionary<char, Texture> keyTexture = new Dictionary<char, Texture>();
+
+            // Setting textures ^-^ 
+            static readonly Texture wall = new Texture('@', ConsoleColor.White, ConsoleColor.DarkYellow, true);
+            static readonly Texture space = new Texture(' ', ConsoleColor.White, ConsoleColor.White);
 
             // Print on Console
             public static void Pain()
@@ -32,12 +40,15 @@ namespace CSharpLight
                 {
                     for (int j = 0; j <= paintedMap.GetUpperBound(1); j++)
                     {
-                        if (paintedMap[i, j] == X) wall.PrintTexture();
-                        else if (paintedMap[i, j] == _) space.PrintTexture();
-
+                        Print(i, j);
                     }
-                    Console.WriteLine();
                 }
+            }
+
+            public static void Print(int x, int y)
+            {
+                if (paintedMap[x, y] == X) wall.Print(y, x);
+                else if (paintedMap[x, y] == _) space.Print(y, x);
             }
         }
     }
