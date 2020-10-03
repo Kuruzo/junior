@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpLight", "CSharpLight.csproj", "{DE6D2763-9394-439B-B9DE-7C6BA59108F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionFromCodewars", "..\SolutionFromCodewars\SolutionFromCodewars.csproj", "{CF619EF8-D682-4DDE-B524-3336081DEA03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolutionFromCodewars", "..\SolutionFromCodewars\SolutionFromCodewars.csproj", "{CF619EF8-D682-4DDE-B524-3336081DEA03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstGame", "..\MyFirstGame\MyFirstGame.csproj", "{421A48CA-6F83-4FFA-A892-F4882DDFB289}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CF619EF8-D682-4DDE-B524-3336081DEA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF619EF8-D682-4DDE-B524-3336081DEA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF619EF8-D682-4DDE-B524-3336081DEA03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421A48CA-6F83-4FFA-A892-F4882DDFB289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421A48CA-6F83-4FFA-A892-F4882DDFB289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421A48CA-6F83-4FFA-A892-F4882DDFB289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421A48CA-6F83-4FFA-A892-F4882DDFB289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
