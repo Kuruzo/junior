@@ -9,18 +9,31 @@ namespace MyFirstGame
         protected readonly ConsoleColor backgroundColor;
         protected readonly bool passable = true;
 
-        public Texture(char symbol, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
+        #region Class Constructor
+        public Texture(char symbol, ConsoleColor backgroundColor)
         {
             this.symbol = symbol;
-            this.foregroundColor = foregroundColor;
             this.backgroundColor = backgroundColor;
         }
 
-        public Texture(char symbol, ConsoleColor foregroundColor, ConsoleColor backgroundColor, bool passable)
-            : this(symbol, foregroundColor, backgroundColor)
+        public Texture(char symbol, ConsoleColor backgroundColor, bool passable)
+            : this(symbol, backgroundColor)
         {
             this.passable = passable;
         }
+
+        public Texture(char symbol, ConsoleColor backgroundColor, ConsoleColor foregroundColor)
+            : this(symbol, backgroundColor)
+        {
+            this.foregroundColor = foregroundColor;
+        }
+
+        public Texture(char symbol, ConsoleColor backgroundColor, ConsoleColor foregroundColor, bool passable)
+            : this(symbol, backgroundColor, passable)
+        {
+            this.foregroundColor = foregroundColor;
+        }
+        #endregion
 
         public void Print()
         {
