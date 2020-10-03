@@ -4,47 +4,51 @@ namespace MyFirstGame
 {
     public class Position
     {
-        protected int xPos;
-        protected int yPos;
+        protected int x;
+        protected int y;
 
         // Block Set
+        public Position(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
         public void Set(int x, int y)
         {
-            xPos = x;
-            yPos = y;
+            this.x = x;
+            this.y = y;
         }
 
         public void Set(Position position)
         {
-            this.xPos = position.xPos;
-            this.yPos = position.yPos;
+            this.x = position.x;
+            this.y = position.y;
         }
 
-        public void SetCursorPosition()
-        {
-            Console.SetCursorPosition(xPos, yPos);
-        }
+        //public void SetCursorPosition()
+        //{
+        //    Console.SetCursorPosition(xPos, yPos);
+        //}
 
         // Block Get
-        //public int XPos { get; }
-        //public int YPos { get; }
+        public int X { get; }
+        public int Y { get; }
 
         public Position Get(Position position)
         {
-            position.xPos = this.xPos;
-            position.yPos = this.yPos;
             return position;
         }
 
         // Moving at coordinates
-        public void Up() => yPos--; 
-        public void Down() => yPos++; 
-        public void Left() => xPos--; 
-        public void Right() => xPos++; 
+        public void Up() => y--; 
+        public void Down() => y++; 
+        public void Left() => x--; 
+        public void Right() => x++; 
 
-        public void Up(int i) => yPos -= i; 
-        public void Down(int i) => yPos += i; 
-        public void Left(int i) => xPos -= i; 
-        public void Right(int i) => xPos += i; 
+        public void Up(int i) => y -= i; 
+        public void Down(int i) => y += i; 
+        public void Left(int i) => x -= i; 
+        public void Right(int i) => x += i; 
     }
 }

@@ -2,12 +2,12 @@
 
 namespace MyFirstGame
 {
-    class Texture
+    public class Texture
     {
-        private readonly char symbol;
-        private readonly ConsoleColor foregroundColor;
-        private readonly ConsoleColor backgroundColor;
-        private readonly bool passable = true;
+        protected readonly char symbol;
+        protected readonly ConsoleColor foregroundColor;
+        protected readonly ConsoleColor backgroundColor;
+        protected readonly bool passable = true;
 
         public Texture(char symbol, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
         {
@@ -29,9 +29,9 @@ namespace MyFirstGame
             Console.Write(symbol);
         }
 
-        public void Print(Position position)
+        public void Print(int x, int y)
         {
-            position.SetCursorPosition();
+            Console.SetCursorPosition(x, y);
             Print();
         }
     }

@@ -13,7 +13,6 @@ namespace CSharpLight
         static void Main()
         {
             // Queue.StartMainMettod();
-            MapGame.Run();
         }
     }  
 }

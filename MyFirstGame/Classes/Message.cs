@@ -6,16 +6,16 @@ namespace MyFirstGame
     {
         public class Message : Position
         {
-            public Message(int x, int y)
+            public Message(int x, int y) : base(x, y)
             {
-                xPos = x;
-                yPos = y;
+                //this.x = base.x;
+                //this.y = base.y;
             }
 
             public void WriteMessage(string message)
             {
                 Console.ResetColor();
-                SetCursorPosition();
+                Console.SetCursorPosition(x, y);
                 Console.WriteLine(">> " + message);
             }
 
