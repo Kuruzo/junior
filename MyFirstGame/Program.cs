@@ -14,9 +14,17 @@ namespace MyFirstGame
             Message message = new Message(3, Console.CursorSize - 10);
             message.WriteMessage("Hi!");
 
+            // Spawn Pleyer
+            Player player = new Player(new Position(5, 3), new Texture('0', ConsoleColor.White, ConsoleColor.Red));
+            player.WaitMoving();
+
             // End
             message.WriteMessage("Buy!");
             Console.ReadKey(true);
+
+            Position position = new Position(1, 5);
+            Map.PrintByPosition(position);
+
         }
     }
 }

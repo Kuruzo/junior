@@ -4,12 +4,12 @@ using System.Text;
 
 namespace MyFirstGame
 {
-    public class Enemy
+    class Enemy
     {
         protected Position position;
         protected Texture texture;
 
-        public Enemy(Position position, Texture texture)
+        protected Enemy(Position position, Texture texture)
         {
             this.position = position;
             this.texture = texture;

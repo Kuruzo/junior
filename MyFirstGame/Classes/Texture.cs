@@ -35,6 +35,11 @@ namespace MyFirstGame
         }
         #endregion
 
+        public bool IsPassable()
+        {
+            return (passable == true) ? true : false;
+        }
+
         public void Print()
         {
             if (Console.ForegroundColor != foregroundColor) Console.ForegroundColor = foregroundColor;
@@ -46,6 +51,11 @@ namespace MyFirstGame
         {
             Console.SetCursorPosition(x, y);
             Print();
+        }
+
+        public void Print(Position position)
+        {
+            Print(position.X, position.Y);
         }
     }
 }

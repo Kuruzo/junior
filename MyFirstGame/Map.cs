@@ -7,20 +7,22 @@ namespace MyFirstGame
     public static class Map
     {
         private readonly static string[] inputMap = {
-            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-            "X________X___________________X                       XXXXXXXXXXXXXXXXXX",
-            "X________X___________________X                       X________________X",
-            "X________X___________________XXXXXXXXXXXXXXXXXXXXXXXXX________________X",
-            "X_____________________________________________________________________X",
-            "X________XXXXXXXX____________XXXXXXXXXXXXXXXXXXXXXXXXX________________X",
-            "X________X_____________X_____X                       X________________X",
-            "X________X_____________X_____X                       XXXXXXXXXXXXXXXXXX",
-            "X________X_____________X_____X",
-            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"};
+            "                                                                         ",
+            " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                          ",
+            " X________X___________________X                       XXXXXXXXXXXXXXXXXX ",
+            " X________X___________________X                       X________________X ",
+            " X________X___________________XXXXXXXXXXXXXXXXXXXXXXXXX________________X ",
+            " X_____________________________________________________________________X ",
+            " X________XXXXXXXX____________XXXXXXXXXXXXXXXXXXXXXXXXX________________X ",
+            " X________X_____________X_____X                       X________________X ",
+            " X________X_____________X_____X                       XXXXXXXXXXXXXXXXXX ",
+            " X________X_____________X_____X                                          ",
+            " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                          ",
+            "                                                                         "};
 
         private static Dictionary<char, Texture> convertedTexture = new Dictionary<char, Texture>();
 
-        readonly static Texture wall = new Texture('#', ConsoleColor.DarkYellow, ConsoleColor.Yellow, true);
+        readonly static Texture wall = new Texture('#', ConsoleColor.DarkYellow, ConsoleColor.Yellow, false);
         readonly static Texture space = new Texture(' ', ConsoleColor.White);
         readonly static Texture nothing = new Texture(' ', ConsoleColor.Black);
 
@@ -43,12 +45,14 @@ namespace MyFirstGame
 
         public static Texture TextureByPosition(Position position)
         {
-            return convertedTexture[inputMap[position.X][position.Y]];
+            return convertedTexture[inputMap[position.Y][position.X]];
         }
 
         public static void PrintByPosition(Position position)
         {
-            convertedTexture[inputMap[position.X][position.Y]].Print(position.X, position.Y);
+            TextureByPosition(position).Print(position.X, position.Y);
         }
+
+
     }
 }

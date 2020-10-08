@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MyFirstGame
+﻿namespace MyFirstGame
 {
     public class Position
     {
@@ -26,29 +24,35 @@ namespace MyFirstGame
             this.y = position.y;
         }
 
-        //public void SetCursorPosition()
-        //{
-        //    Console.SetCursorPosition(xPos, yPos);
-        //}
-
         // Block Get
-        public int X { get; }
-        public int Y { get; }
+        public int X { get => x; }
+        public int Y { get => y; }
 
-        public Position Get(Position position)
+        public Position Get()
         {
-            return position;
+            return new Position(x, y);
+        }
+
+        private Position Get(int x, int y)
+        {
+            return new Position(x, y);
         }
 
         // Moving at coordinates
-        public void Up() => y--; 
-        public void Down() => y++; 
-        public void Left() => x--; 
-        public void Right() => x++; 
+        public void Step(string direction, int distance = 1)
+        {
+            switch (direction)
+            {
+                case "Up": y -= distance; break;
+                case "Down": y += distance; break;
+                case "Left": x -= distance; break;
+                case "Right": x += distance; break;
+            }
+        }
 
-        public void Up(int i) => y -= i; 
-        public void Down(int i) => y += i; 
-        public void Left(int i) => x -= i; 
-        public void Right(int i) => x += i; 
+        public Position Up(int distance = 1) { return Get(x, y - distance); }
+        public Position Down(int distance = 1) { return Get(x, y + distance); }
+        public Position Left(int distance = 1) { return Get(x - distance, y); }
+        public Position Right(int distance = 1) { return Get(x + distance, y); }
     }
 }
