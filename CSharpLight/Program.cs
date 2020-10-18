@@ -12,7 +12,7 @@ namespace CSharpLight
     {
         static void Main()
         {
-            Queue.Run();
+            WorkWithString.Run();
         }
     }  
 }
