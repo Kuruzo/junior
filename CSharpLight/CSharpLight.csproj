@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Homework\ExitControle.cs" />
     <Compile Include="Homework\BaseCicle.cs" />
     <Compile Include="Homework\CristalShop.cs" />
     <Compile Include="Program.cs" />
