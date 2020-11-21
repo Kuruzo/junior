@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyFirstGame
 {
-    class Player : Enemy
+    class Player : GameObject
     {
         // Action, Func
 
@@ -23,16 +23,16 @@ namespace MyFirstGame
                 switch (consoleKey)
                 {
                     case ConsoleKey.UpArrow:
-                        if (Map.TextureByPosition(position.Up()).IsPassable())
+                        if (CurrentLevel.TextureByPosition(position.Up()).IsPassable())
                             this.Move("Up");                            
                         break;
-                    case ConsoleKey.DownArrow: if (Map.TextureByPosition(position.Down()).IsPassable())
+                    case ConsoleKey.DownArrow: if (CurrentLevel.TextureByPosition(position.Down()).IsPassable())
                             this.Move("Down");
                         break;
-                    case ConsoleKey.LeftArrow: if (Map.TextureByPosition(position.Left()).IsPassable())
+                    case ConsoleKey.LeftArrow: if (CurrentLevel.TextureByPosition(position.Left()).IsPassable())
                             this.Move("Left");
                         break;
-                    case ConsoleKey.RightArrow: if (Map.TextureByPosition(position.Right()).IsPassable())
+                    case ConsoleKey.RightArrow: if (CurrentLevel.TextureByPosition(position.Right()).IsPassable())
                             this.Move("Right");
                         break;
                     case ConsoleKey.Escape: goto exit;
@@ -69,7 +69,7 @@ namespace MyFirstGame
 
         private void CanMove(Position position)
         {
-            if (Map.TextureByPosition(position).IsPassable()) this.position = position;
+            if (CurrentLevel.TextureByPosition(position).IsPassable()) this.position = position;
         }
     }
 }

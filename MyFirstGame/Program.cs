@@ -15,7 +15,7 @@ namespace MyFirstGame
             Console.CursorVisible = false;
 
             // Start
-            Map.InitMap();
+            CurrentLevel.InitMap();
             Message message = new Message(3, Console.CursorSize - 10);
             message.WriteMessage("Hi!");
 
@@ -25,7 +25,7 @@ namespace MyFirstGame
 
             Position pos = new Position(5, 5);
 
-            Enemy enemy = new Enemy(pos, new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen));
+            GameObject enemy = new GameObject(pos, new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen));
             enemy.texture.Print(pos);
 
 
@@ -39,3 +39,11 @@ namespace MyFirstGame
         }
     }
 }
+// Better to use property instead of method here
+//public bool IsPassable()
+//{
+//    return (passable == true) ? true : false;
+//}
+// dependency injection
+// Autofac
+

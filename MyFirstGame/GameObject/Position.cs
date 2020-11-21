@@ -2,12 +2,10 @@
 
 namespace MyFirstGame
 {
-    
-
     public class Position 
     {
 
-//         Point p;
+        //Point position = new Point();
         protected int x;
         protected int y;
 

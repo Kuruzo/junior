@@ -6,20 +6,15 @@ namespace MyFirstGame
 {
     class GameObject
     {
-        public Position Position { get; set; }
-        public Texture texture;
+        public Position position { get; set; }
+        private Texture texture { get; }
 
-        public Enemy(Position position, Texture texture)
+        public GameObject(Position position, Texture texture)
         {
             this.position = position;
             this.texture = texture;
 
             Player.Moved += OnMovedEventHandler;
-        }
-
-        public Enemy()
-        {
-
         }
 
         public bool OnMovedEventHandler(Position position)
@@ -39,18 +34,5 @@ namespace MyFirstGame
 
             return false;
         }
-    }
-    
-    static class EnemyDictionary
-    {
-        public static Texture dollar = new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen);
-        public static Position position1 = new Position(1, 2);
-        public static Enemy enemy1 = new Enemy(position1, dollar);
-
-        public static Dictionary<string, Enemy> UnitDictionary = new Dictionary<string, Enemy>()
-        {
-            {"dollar(1, 1)", new Enemy (new Position(1, 2), dollar) },
-            {"dollar(2, 2)", new Enemy (position1, dollar) },
-        };
     }
 }
