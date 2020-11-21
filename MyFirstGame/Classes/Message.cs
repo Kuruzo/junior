@@ -3,21 +3,21 @@
 namespace MyFirstGame
 {
 
-    public class Message : Position
+    public class Message
     {
-        public Message(int x, int y) : base(x, y) { }
+        private Position position;
 
-        public void WriteMessage(string message)
+        public Message(int x, int y)
         {
-            Console.ResetColor();
-            Console.SetCursorPosition(x, y);
-            Console.WriteLine(">> " + message);
+            position = new Position(x, y);
         }
 
-        public void WriteMessage(string message, bool isExeption)
+
+
+        public void WriteMessage(string message, bool isExeption = false)
         {
             if (isExeption == false) Console.ResetColor();
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(position.X, position.Y);
             Console.WriteLine(">> " + message);
         }
 

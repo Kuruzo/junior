@@ -12,14 +12,14 @@ namespace MyFirstGame
         public static event Func<Position, bool> Moved;
 
         public Player(Position position, Texture texture)
-            : base(position, texture) { texture.Print(position); }
+            : base(position, texture) { this.Print(); }
 
         public void WaitMoving()
         {
             while (true)
             {
                 ConsoleKey consoleKey = Console.ReadKey(true).Key;
-                Map.PrintByPosition(position);
+                this.Print();
                 switch (consoleKey)
                 {
                     case ConsoleKey.UpArrow:
@@ -37,22 +37,34 @@ namespace MyFirstGame
                         break;
                     case ConsoleKey.Escape: goto exit;
                     default:
-                        texture.Print(position);
+                        this.Print();
                         Message message = new Message(3, 12);
                         message.Exeption("Incorrect Key. To Exit press ESC");
                         break;
                 }
 
-                
-                texture.Print(position);
+
+                this.Print();
             }
         exit:;
         }
 
+        public void Hide()
+        {
+            //Texture.BackgroundTexture.Print(position);
+        }
+
+        public void Print()
+        {
+            texture.Print(position);
+        }
+
         public void Move(string direction)
         {
+            Hide();
             position.Step(direction);
             Moved(position);
+            Print();
         }
 
         private void CanMove(Position position)

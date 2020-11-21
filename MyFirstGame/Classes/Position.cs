@@ -49,6 +49,7 @@ namespace MyFirstGame
         // Moving at coordinates
         public void Step(string direction, int distance = 1)
         {
+            // TODO use enum for directions
             switch (direction)
             {
                 case "Up": y -= distance; break;

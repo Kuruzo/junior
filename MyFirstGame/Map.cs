@@ -4,8 +4,18 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace MyFirstGame
 {
-    public static class Map
+    // dependency injection
+    // Autofac
+
+    // Some base class that contains everything in game.
+    public class Game
     {
+        List<Enemy> enemies;
+    }
+
+    // don't go static
+    public static class Map
+    {      
         private readonly static string[] inputMap = {
             "                                                                         ",
             " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                          ",
@@ -22,6 +32,11 @@ namespace MyFirstGame
 
         private static Dictionary<char, Texture> convertedTexture = new Dictionary<char, Texture>();
 
+
+        // TODO create 'Tile' class that will contain Texture and GameObject.
+        // Make Map as an 2D-array of Tiles
+
+        // move in Texture class
         readonly static Texture wall = new Texture('#', ConsoleColor.DarkYellow, ConsoleColor.Yellow, false);
         readonly static Texture space = new Texture(' ', ConsoleColor.White);
         readonly static Texture nothing = new Texture(' ', ConsoleColor.Black);
@@ -43,6 +58,7 @@ namespace MyFirstGame
             }
         }
 
+        // Use Tile to check for Passable instead of doing such methods
         public static Texture TextureByPosition(Position position)
         {
             return convertedTexture[inputMap[position.Y][position.X]];

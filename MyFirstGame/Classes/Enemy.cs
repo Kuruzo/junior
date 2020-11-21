@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace MyFirstGame
 {
-    class Enemy
+    class GameObject
     {
-        public Position position;
+        public Position Position { get; set; }
         public Texture texture;
 
         public Enemy(Position position, Texture texture)
@@ -40,7 +40,7 @@ namespace MyFirstGame
             return false;
         }
     }
-
+    
     static class EnemyDictionary
     {
         public static Texture dollar = new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen);
