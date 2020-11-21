@@ -13,6 +13,31 @@ namespace MyFirstGame
         {
             this.position = position;
             this.texture = texture;
+
+            Player.Moved += OnMovedEventHandler;
+        }
+
+        public Enemy()
+        {
+
+        }
+
+        public bool OnMovedEventHandler(Position position)
+        {
+            if (this.position.X == position.X && this.position.Y == position.Y)
+            {
+
+                Message message1 = new Message(10, 10);
+                message1.WriteMessage("Collided");
+                return true;
+
+
+            }
+
+            Message message = new Message(10, 10);
+            message.WriteMessage("Clear");            
+
+            return false;
         }
     }
 
@@ -24,8 +49,8 @@ namespace MyFirstGame
 
         public static Dictionary<string, Enemy> UnitDictionary = new Dictionary<string, Enemy>()
         {
-            {"dollar(1, 1)", new Enemy{ position = new Position(1, 2), texture = dollar} },
-            {"dollar(2, 2)", new Enemy{ position = position1, texture = dollar} },
+            {"dollar(1, 1)", new Enemy (new Position(1, 2), dollar) },
+            {"dollar(2, 2)", new Enemy (position1, dollar) },
         };
     }
 }

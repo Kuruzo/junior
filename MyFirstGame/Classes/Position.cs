@@ -1,7 +1,13 @@
-﻿namespace MyFirstGame
+﻿using System.Drawing;
+
+namespace MyFirstGame
 {
-    public class Position
+    
+
+    public class Position 
     {
+
+//         Point p;
         protected int x;
         protected int y;
 
@@ -9,7 +15,7 @@
         public Position(int x, int y)
         {
             this.x = x;
-            this.y = y;
+            this.y = y;            
         }
 
         public void Set(int x, int y)
@@ -49,7 +55,7 @@
                 case "Down": y += distance; break;
                 case "Left": x -= distance; break;
                 case "Right": x += distance; break;
-            }
+            }            
         }
 
         public Position Up(int distance = 1) { return Get(x, y - distance); }

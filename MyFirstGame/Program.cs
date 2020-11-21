@@ -1,11 +1,12 @@
 ﻿using System;
 
 namespace MyFirstGame
-{
+{    
     partial class Program
     {
         static void Main()
-        {
+        {                        
+
             // settup
             Console.CursorVisible = false;
 
@@ -17,6 +18,15 @@ namespace MyFirstGame
             // Spawn Pleyer
             Player player = new Player(new Position(5, 3), new Texture('0', ConsoleColor.White, ConsoleColor.Red));
             player.WaitMoving();
+
+            Position pos = new Position(5, 5);
+
+            Enemy enemy = new Enemy(pos, new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen));
+            enemy.texture.Print(pos);
+
+
+
+
 
             // End
             message.WriteMessage("Buy!");

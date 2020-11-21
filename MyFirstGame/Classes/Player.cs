@@ -7,6 +7,10 @@ namespace MyFirstGame
 {
     class Player : Enemy
     {
+        // Action, Func
+
+        public static event Func<Position, bool> Moved;
+
         public Player(Position position, Texture texture)
             : base(position, texture) { texture.Print(position); }
 
@@ -19,28 +23,36 @@ namespace MyFirstGame
                 switch (consoleKey)
                 {
                     case ConsoleKey.UpArrow:
-                        if (Map.TextureByPosition(position.Up()).IsPassable()) 
-                            position.Step("Up"); 
+                        if (Map.TextureByPosition(position.Up()).IsPassable())
+                            this.Move("Up");                            
                         break;
-                    case ConsoleKey.DownArrow: if (Map.TextureByPosition(position.Down()).IsPassable()) 
-                            position.Step("Down");
+                    case ConsoleKey.DownArrow: if (Map.TextureByPosition(position.Down()).IsPassable())
+                            this.Move("Down");
                         break;
-                    case ConsoleKey.LeftArrow: if (Map.TextureByPosition(position.Left()).IsPassable()) 
-                            position.Step("Left"); 
+                    case ConsoleKey.LeftArrow: if (Map.TextureByPosition(position.Left()).IsPassable())
+                            this.Move("Left");
                         break;
-                    case ConsoleKey.RightArrow: if (Map.TextureByPosition(position.Right()).IsPassable()) 
-                            position.Step("Right"); 
+                    case ConsoleKey.RightArrow: if (Map.TextureByPosition(position.Right()).IsPassable())
+                            this.Move("Right");
                         break;
                     case ConsoleKey.Escape: goto exit;
                     default:
                         texture.Print(position);
-                        Program.Message message = new Program.Message(3, 12);
+                        Message message = new Message(3, 12);
                         message.Exeption("Incorrect Key. To Exit press ESC");
                         break;
                 }
+
+                
                 texture.Print(position);
             }
         exit:;
+        }
+
+        public void Move(string direction)
+        {
+            position.Step(direction);
+            Moved(position);
         }
 
         private void CanMove(Position position)
