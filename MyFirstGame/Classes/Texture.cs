@@ -4,10 +4,15 @@ namespace MyFirstGame
 {
     public class Texture
     {
+        // make public as an alternative to properties
+        readonly static Texture wall = new Texture('#', ConsoleColor.DarkYellow, ConsoleColor.Yellow, false);
+        readonly static Texture space = new Texture(' ', ConsoleColor.White);
+        readonly static Texture nothing = new Texture(' ', ConsoleColor.Black);
+
         protected readonly char symbol;
         protected readonly ConsoleColor foregroundColor;
         protected readonly ConsoleColor backgroundColor;
-        protected readonly bool passable = true;
+        protected readonly bool passable = true; // shouldn't be in texture class
 
         #region Class Constructor
         public Texture(char symbol, ConsoleColor backgroundColor)
@@ -35,6 +40,7 @@ namespace MyFirstGame
         }
         #endregion
 
+        // Better to use property instead of method here
         public bool IsPassable()
         {
             return (passable == true) ? true : false;
@@ -57,5 +63,8 @@ namespace MyFirstGame
         {
             Print(position.X, position.Y);
         }
+
+        //public static Texture BackgroundTexture { get => space; }
+
     }
 }

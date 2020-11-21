@@ -2,32 +2,31 @@
 
 namespace MyFirstGame
 {
-    partial class Program
+
+    public class Message
     {
-        public class Message : Position
+        private Position position;
+
+        public Message(int x, int y)
         {
-            public Message(int x, int y) : base(x, y) { }
+            position = new Position(x, y);
+        }
 
-            public void WriteMessage(string message)
-            {
-                Console.ResetColor();
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine(">> " + message);
-            }
 
-            public void WriteMessage(string message, bool isExeption)
-            {
-                if (isExeption == false) Console.ResetColor();
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine(">> " + message);
-            }
 
-            public void Exeption(string message)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.BackgroundColor = ConsoleColor.Black;
-                WriteMessage(" !#@%^! " + message + " !#@%^! ", true);
-            }
+        public void WriteMessage(string message, bool isExeption = false)
+        {
+            if (isExeption == false) Console.ResetColor();
+            Console.SetCursorPosition(position.X, position.Y);
+            Console.WriteLine(">> " + message);
+        }
+
+        public void Exeption(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.Black;
+            WriteMessage(" !#@%^! " + message + " !#@%^! ", true);
         }
     }
+
 }
