@@ -16,7 +16,7 @@ namespace MyFirstGame
             this.backgroundColor = backgroundColor;
         }
 
-        public Texture(char symbol, ConsoleColor backgroundColor, bool passable)
+        public Texture(char symbol, ConsoleColor backgroundColor, bool passable = true)
             : this(symbol, backgroundColor)
         {
             this.passable = passable;
@@ -28,7 +28,7 @@ namespace MyFirstGame
             this.foregroundColor = foregroundColor;
         }
 
-        public Texture(char symbol, ConsoleColor backgroundColor, ConsoleColor foregroundColor, bool passable)
+        public Texture(char symbol, ConsoleColor backgroundColor, ConsoleColor foregroundColor, bool passable = true)
             : this(symbol, backgroundColor, passable)
         {
             this.foregroundColor = foregroundColor;

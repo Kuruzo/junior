@@ -5,7 +5,7 @@
         protected int x;
         protected int y;
 
-        // Block Set
+        #region Block Set
         public Position(int x, int y)
         {
             this.x = x;
@@ -23,8 +23,9 @@
             this.x = position.x;
             this.y = position.y;
         }
+        #endregion
 
-        // Block Get
+        #region Block Get
         public int X { get => x; }
         public int Y { get => y; }
 
@@ -37,6 +38,7 @@
         {
             return new Position(x, y);
         }
+        #endregion
 
         // Moving at coordinates
         public void Step(string direction, int distance = 1)

@@ -22,9 +22,6 @@ namespace MyFirstGame
             message.WriteMessage("Buy!");
             Console.ReadKey(true);
 
-            Position position = new Position(1, 5);
-            Map.PrintByPosition(position);
-
         }
     }
 }
