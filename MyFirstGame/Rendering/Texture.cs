@@ -5,52 +5,45 @@ namespace MyFirstGame
 {
     public class Texture
     {
-        protected readonly char symbol;
-        protected readonly ConsoleColor foregroundColor;
-        protected readonly ConsoleColor backgroundColor;
-
-        public enum TextureName
-        {
-            wall, space, nothing, player, dollar, enemy
-        }
-
-        private static Dictionary<TextureName, Texture> TextureDictionary = new Dictionary<TextureName, Texture>()
-        {
-            {TextureName.wall , new Texture('#', ConsoleColor.DarkYellow, ConsoleColor.Yellow)},
-            {TextureName.space, new Texture(' ', ConsoleColor.White)},
-            {TextureName.nothing, new Texture(' ', ConsoleColor.Black)}
-        };
+        public readonly char symbol;
+        public readonly ConsoleColor foregroundColor;
+        public readonly ConsoleColor backgroundColor;
 
         #region Class Constructor
-        public Texture(char symbol, ConsoleColor backgroundColor)
+        public Texture(Name name)
+        {
+            TextureDictionary.TryGetValue(name, out Texture temp);
+
+            this.symbol = temp.symbol;
+            this.foregroundColor = temp.foregroundColor;
+            this.backgroundColor = temp.backgroundColor;
+        }
+        private Texture(char symbol, ConsoleColor backgroundColor)
         {
             this.symbol = symbol;
             this.backgroundColor = backgroundColor;
             this.foregroundColor = backgroundColor;
         }
-        public Texture(char symbol, ConsoleColor backgroundColor, ConsoleColor foregroundColor)
+        private Texture(char symbol, ConsoleColor backgroundColor, ConsoleColor foregroundColor)
             : this(symbol, backgroundColor)
         {
             this.foregroundColor = foregroundColor;
         }
         #endregion
 
-        public void Print()
+        // Enum of Textures
+        public enum Name
         {
-            if (Console.ForegroundColor != foregroundColor) Console.ForegroundColor = this.foregroundColor;
-            if (Console.BackgroundColor != backgroundColor) Console.BackgroundColor = this.backgroundColor;
-            Console.Write(symbol);
+            wall, space, nothing, player, dollar, enemy
         }
 
-        public void Print(Position position)
+        private Dictionary<Name, Texture> TextureDictionary = new Dictionary<Name, Texture>()
         {
-            Print(position.X, position.Y);
-        }
-
-        public void Print(int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            Print();
-        }
+            {Name.wall , new Texture('#', ConsoleColor.DarkYellow, ConsoleColor.Yellow)},
+            {Name.space, new Texture(' ', ConsoleColor.White)},
+            {Name.nothing, new Texture(' ', ConsoleColor.Black)},
+            {Name.player, new Texture('0', ConsoleColor.White, ConsoleColor.DarkBlue)},
+            {Name.dollar, new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen)},
+        };
     }
 }

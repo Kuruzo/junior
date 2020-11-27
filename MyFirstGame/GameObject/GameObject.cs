@@ -7,32 +7,24 @@ namespace MyFirstGame
     class GameObject
     {
         public Position position { get; set; }
-        private Texture texture { get; }
+        public Texture texture { get; }
+        public bool passeble { get; }
 
-        public GameObject(Position position, Texture texture)
+        public GameObject() { }
+
+        public GameObject(Position position, Texture texture, bool passeble = false)
         {
             this.position = position;
             this.texture = texture;
-
-            Player.Moved += OnMovedEventHandler;
+            this.passeble = passeble;
         }
 
-        public bool OnMovedEventHandler(Position position)
+        public void Print()
         {
-            if (this.position.X == position.X && this.position.Y == position.Y)
-            {
-
-                Message message1 = new Message(10, 10);
-                message1.WriteMessage("Collided");
-                return true;
-
-
-            }
-
-            Message message = new Message(10, 10);
-            message.WriteMessage("Clear");            
-
-            return false;
+            Console.SetCursorPosition(position.X, position.Y);
+            if (Console.ForegroundColor != texture.foregroundColor) Console.ForegroundColor = texture.foregroundColor;
+            if (Console.BackgroundColor != texture.backgroundColor) Console.BackgroundColor = texture.backgroundColor;
+            Console.Write(texture.symbol);
         }
     }
 }

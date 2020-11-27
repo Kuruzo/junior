@@ -5,39 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace MyFirstGame.FileMenager
+namespace MyFirstGame
 {
     class FileReader
     {
-        class MapLoader
+        public List<string> LoadFromFile(string fileName)
         {
-            public CurrentLevel LoadFromFile(string fileName)
+            List<string> fileInput = ReadMapInputFromFile(fileName);
+            foreach (string line in fileInput)
             {
-                List<string> fileInput = ReadMapInputFromFile(fileName);
-                foreach (string line in fileInput)
-                {
-                    Console.WriteLine(line);
-                }
-                return new CurrentLevel(fileInput);
+                Console.WriteLine(line);
             }
 
-            private List<string> ReadMapInputFromFile(string fileName)
+            return fileInput;
+        }
+
+        private List<string> ReadMapInputFromFile(string fileName)
+        {
+            List<string> input = new List<string>();
+
+            using (StreamReader sReader = File.OpenText(fileName))
             {
-                List<string> input = new List<string>();
-
-                using (StreamReader sReader = File.OpenText(fileName))
+                string line;
+                while (!sReader.EndOfStream)
                 {
-                    string line;
-                    while (!sReader.EndOfStream)
-                    {
-                        line = sReader.ReadLine();
-                        input.Add(line);
-                    }
+                    line = sReader.ReadLine();
+                    input.Add(line);
                 }
-
-                return input;
             }
 
+            return input;
         }
     }
 }

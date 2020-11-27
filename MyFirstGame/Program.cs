@@ -1,49 +1,33 @@
-﻿using System;
-
-namespace MyFirstGame
-{    
+﻿namespace MyFirstGame
+{
     partial class Program
     {
         static void Main()
-        {                        
-
-            // Ideally - simply use
-            // Game game = new Game();
-            // game.Start();
-
-            // settup
-            Console.CursorVisible = false;
-
-            // Start
-            CurrentLevel.InitMap();
-            Message message = new Message(3, Console.CursorSize - 10);
-            message.WriteMessage("Hi!");
-
-            // Spawn Pleyer
-            Player player = new Player(new Position(5, 3), new Texture('0', ConsoleColor.White, ConsoleColor.Red));            
-            player.WaitMoving();
-
-            Position pos = new Position(5, 5);
-
-            GameObject enemy = new GameObject(pos, new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen));
-            enemy.texture.Print(pos);
-
-
-
-
-
-            // End
-            message.WriteMessage("Buy!");
-            Console.ReadKey(true);
-
+        {
+            Game game = new Game();
+            game.Start();
         }
     }
 }
-// Better to use property instead of method here
-//public bool IsPassable()
-//{
-//    return (passable == true) ? true : false;
-//}
 // dependency injection
 // Autofac
+
+// Player.Moved += OnMovedEventHandler;
+//public bool OnMovedEventHandler(Position position)
+//{
+//    if (this.position.X == position.X && this.position.Y == position.Y)
+//    {
+
+//        Message message1 = new Message(new Position(15, 20));
+//        message1.Write("Collided");
+//        return true;
+
+
+//    }
+
+//    Message message = new Message(new Position(15, 20));
+//    message.Write("Clear");            
+
+//    return false;
+//}
 

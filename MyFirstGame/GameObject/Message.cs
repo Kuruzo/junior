@@ -5,28 +5,29 @@ namespace MyFirstGame
 
     public class Message
     {
-        private Position position;
+        protected Position position;
 
-        public Message(int x, int y)
+        public Message(Position position)
         {
-            position = new Position(x, y);
+            this.position = position;
         }
 
-
-
-        public void WriteMessage(string message, bool isExeption = false)
+        public void Write(string messageString, ConsoleColor messageColor = ConsoleColor.DarkGray)
         {
-            if (isExeption == false) Console.ResetColor();
             Console.SetCursorPosition(position.X, position.Y);
-            Console.WriteLine(">> " + message);
-        }
-
-        public void Exeption(string message)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.BackgroundColor = ConsoleColor.Black;
-            WriteMessage(" !#@%^! " + message + " !#@%^! ", true);
+            if (Console.BackgroundColor != ConsoleColor.Black) Console.BackgroundColor = ConsoleColor.Black;
+            if (Console.ForegroundColor != messageColor) Console.ForegroundColor = messageColor;
+            Console.WriteLine(">> " + messageString);
         }
     }
 
+    //public class Exeption : Message
+    //{
+    //    public Exeption(Position position) : base(position) { }
+
+    //    public void Write(string message)
+    //    {
+    //        Write(" !#@%^! " + message + " !#@%^! ", ConsoleColor.Red);
+    //    }
+    //}
 }

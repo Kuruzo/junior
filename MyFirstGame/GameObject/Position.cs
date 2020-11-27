@@ -45,21 +45,31 @@ namespace MyFirstGame
         #endregion
 
         // Moving at coordinates
-        public void Step(string direction, int distance = 1)
+        public enum Direction : byte
+        { Up, Down, Left, Right }
+
+        public void Step(Direction direction, int distance = 1)
         {
-            // TODO use enum for directions
             switch (direction)
             {
-                case "Up": y -= distance; break;
-                case "Down": y += distance; break;
-                case "Left": x -= distance; break;
-                case "Right": x += distance; break;
+                case Direction.Up: y -= distance; break;
+                case Direction.Down: y += distance; break;
+                case Direction.Left: x -= distance; break;
+                case Direction.Right: x += distance; break;
             }            
         }
 
-        public Position Up(int distance = 1) { return Get(x, y - distance); }
-        public Position Down(int distance = 1) { return Get(x, y + distance); }
-        public Position Left(int distance = 1) { return Get(x - distance, y); }
-        public Position Right(int distance = 1) { return Get(x + distance, y); }
+        public Position OnStep(Direction direction, int distance = 1)
+        {
+            switch (direction)
+            {
+                case Direction.Up: return Get(x, y - distance);
+                case Direction.Down: return Get(x, y + distance);
+                case Direction.Left: return Get(x - distance, y);
+                case Direction.Right: return Get(x + distance, y);
+                default: 
+                    return new Position(1, 1); // remake later
+            }
+        }
     }
 }

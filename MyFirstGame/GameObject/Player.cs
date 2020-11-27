@@ -12,64 +12,45 @@ namespace MyFirstGame
         public static event Func<Position, bool> Moved;
 
         public Player(Position position, Texture texture)
-            : base(position, texture) { this.Print(); }
+            : base(position, texture) { Print(); }
 
-        public void WaitMoving()
+        public void WaitKeyForMoving()
         {
             while (true)
             {
+                bool todo = true;
+                Position.Direction direction = 0;
+
                 ConsoleKey consoleKey = Console.ReadKey(true).Key;
-                this.Print();
                 switch (consoleKey)
                 {
-                    case ConsoleKey.UpArrow:
-                        if (CurrentLevel.TextureByPosition(position.Up()).IsPassable())
-                            this.Move("Up");                            
-                        break;
-                    case ConsoleKey.DownArrow: if (CurrentLevel.TextureByPosition(position.Down()).IsPassable())
-                            this.Move("Down");
-                        break;
-                    case ConsoleKey.LeftArrow: if (CurrentLevel.TextureByPosition(position.Left()).IsPassable())
-                            this.Move("Left");
-                        break;
-                    case ConsoleKey.RightArrow: if (CurrentLevel.TextureByPosition(position.Right()).IsPassable())
-                            this.Move("Right");
-                        break;
-                    case ConsoleKey.Escape: goto exit;
+                    case ConsoleKey.A: direction = Position.Direction.Left; break;
+                    case ConsoleKey.W: direction = Position.Direction.Up; break;
+                    case ConsoleKey.D: direction = Position.Direction.Right; break;
+                    case ConsoleKey.S: direction = Position.Direction.Down; break;
+
+                    case ConsoleKey.LeftArrow: direction = Position.Direction.Left; break;
+                    case ConsoleKey.UpArrow:   direction = Position.Direction.Up; break;
+                    case ConsoleKey.RightArrow:direction = Position.Direction.Right; break;
+                    case ConsoleKey.DownArrow: direction = Position.Direction.Down; break;
+                    
+                    case ConsoleKey.Escape: todo = false; break;
                     default:
-                        this.Print();
-                        Message message = new Message(3, 12);
-                        message.Exeption("Incorrect Key. To Exit press ESC");
-                        break;
+                        Message message = new Message(new Position(3, 12)); // make metod in CurrentLevel
+                        message.Write("Incorrect Key. To Exit press ESC");
+                        continue;
                 }
 
-
-                this.Print();
+                if (todo != true) break;
+                else Move(direction);
             }
-        exit:;
         }
 
-        public void Hide()
+        public void Move(Position.Direction direction)
         {
-            //Texture.BackgroundTexture.Print(position);
-        }
-
-        public void Print()
-        {
-            texture.Print(position);
-        }
-
-        public void Move(string direction)
-        {
-            Hide();
             position.Step(direction);
-            Moved(position);
-            Print();
-        }
-
-        private void CanMove(Position position)
-        {
-            if (CurrentLevel.TextureByPosition(position).IsPassable()) this.position = position;
+            //Moved(position);
+            //Print();
         }
     }
 }
