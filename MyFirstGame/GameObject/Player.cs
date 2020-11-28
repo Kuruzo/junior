@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
+// Пример using
+using Direction = MyFirstGame.Position.Direction;
+
 namespace MyFirstGame
 {
     class Player : GameObject
@@ -51,6 +54,7 @@ namespace MyFirstGame
             position.Step(direction);
             //Moved(position);
             //Print();
+
         }
     }
 }

@@ -1,14 +1,22 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MyFirstGame
 {
-    public class Texture
+    public enum Name
+    {
+        wall, space, nothing, player, dollar, enemy
+    }
+
+    public class Texture 
     {
         public readonly char symbol;
         public readonly ConsoleColor foregroundColor;
         public readonly ConsoleColor backgroundColor;
 
+
+        // Сделать приватный конструктор, чтобы никто больше не мог создавать никаких текстур, кроме уже существующих
         #region Class Constructor
         public Texture(Name name)
         {
@@ -32,9 +40,11 @@ namespace MyFirstGame
         #endregion
 
         // Enum of Textures
-        public enum Name
+       
+
+        public Texture this[Name key]
         {
-            wall, space, nothing, player, dollar, enemy
+            get => TextureDictionary[key];
         }
 
         private Dictionary<Name, Texture> TextureDictionary = new Dictionary<Name, Texture>()
@@ -45,5 +55,7 @@ namespace MyFirstGame
             {Name.player, new Texture('0', ConsoleColor.White, ConsoleColor.DarkBlue)},
             {Name.dollar, new Texture('$', ConsoleColor.White, ConsoleColor.DarkGreen)},
         };
+
+       
     }
 }

@@ -45,6 +45,7 @@ namespace MyFirstGame
         #endregion
 
         // Moving at coordinates
+        // Можно объявить 
         public enum Direction : byte
         { Up, Down, Left, Right }
 
@@ -67,9 +68,10 @@ namespace MyFirstGame
                 case Direction.Down: return Get(x, y + distance);
                 case Direction.Left: return Get(x - distance, y);
                 case Direction.Right: return Get(x + distance, y);
-                default: 
-                    return new Position(1, 1); // remake later
+                
             }
+
+            throw new System.Exception();
         }
     }
 }
