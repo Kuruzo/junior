@@ -6,6 +6,8 @@ namespace MyFirstGame
     // Some base class that contains everything in game.
     public class Game
     {
+        // реализовать аггрегацию \ композицию по отношению к уровню                
+
         public void Start()
         {
             const string FileName = "D:/IT/VS Project/MyFirstGame/FileMenager/Levels/MapLevel1.txt";
@@ -16,16 +18,25 @@ namespace MyFirstGame
 
     class SceneLevel
     {
+        // если уровень управляет игрой, то он должен аггрегировать в себе игровые элементы
+        // а также иметь какой-то метод старта
+        GameObject[,] tileMap;
+
+
+        // Сериализация для сохранения и загрузки игры
+
         public SceneLevel(string fileName)
         {
             FileReader fileReader = new FileReader();
-            GameObject[,] tileMap = MapFiller(fileReader.LoadFromFile(fileName)); 
+            tileMap = MapFiller(fileReader.LoadFromFile(fileName)); 
 
 
         }
 
         private GameObject[,] MapFiller(List<string> inputFile)
         {
+            // длина карты = длина загружаемой строки
+            // ширина карты = количеству строк 
             GameObject[,] tileMap = new GameObject[1, 1];
 
             for (int i = 0; i < inputFile.Count; i++)
@@ -38,6 +49,8 @@ namespace MyFirstGame
 
             return tileMap;
         }
+
+        // можно просто в цикле выше все это сделать
         private void FillArrayLine(ref GameObject[,] inputArray, string inputString, int lineNumber)
         {
             for (int i = 0; i < inputString.Length; i++)
@@ -46,6 +59,7 @@ namespace MyFirstGame
             }
         }
 
+        // зачем это?)
         private void ResizeArray(ref GameObject[,] inputArray, int newM, int newN)
         {
             GameObject[,] newArray = new GameObject[newM, newN];
@@ -55,6 +69,7 @@ namespace MyFirstGame
             inputArray = newArray;
         }
 
+        // в идеале выделить в отдельный класс
         private GameObject SymbolDecoder(char symbol, int x, int y)
         {
             Position position = new Position(x, y);

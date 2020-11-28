@@ -21,10 +21,14 @@ namespace MyFirstGame
 
         public void Print()
         {
+            // Дублирование кода. См класс message
             Console.SetCursorPosition(position.X, position.Y);
             if (Console.ForegroundColor != texture.foregroundColor) Console.ForegroundColor = texture.foregroundColor;
             if (Console.BackgroundColor != texture.backgroundColor) Console.BackgroundColor = texture.backgroundColor;
             Console.Write(texture.symbol);
+
+            // пример использования this из класса Texture
+            Texture t = texture[Name.wall];            
         }
     }
 }

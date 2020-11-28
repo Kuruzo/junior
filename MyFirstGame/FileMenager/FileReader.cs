@@ -7,8 +7,10 @@ using System.IO;
 
 namespace MyFirstGame
 {
-    class FileReader
+    // скорее всего должен быть публичным?
+    class FileReader 
     {
+        // try/catch при открытии файла
         public List<string> LoadFromFile(string fileName)
         {
             List<string> fileInput = ReadMapInputFromFile(fileName);
